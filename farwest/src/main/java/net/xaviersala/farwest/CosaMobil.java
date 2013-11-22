@@ -11,7 +11,14 @@ import acm.graphics.GImage;
  *
  */
 public abstract class CosaMobil extends Cosa {
-
+    /**
+     * Defineix el que és mitja volta.
+     */
+    private static final int ANGLESCERCLE = 360;
+    /**
+     * Rotació mínima.
+     */
+    private static final double PAS = 45;
     /**
      * Direcció del moviment en graus.
      */
@@ -78,6 +85,19 @@ public abstract class CosaMobil extends Cosa {
      */
     public final double getDireccio() {
         return direccio;
+    }
+
+    /**
+     * Gira la direcció un número determinat de graus.
+     * @param objectiu direcció en la que he de girar
+     */
+    public final void giraDireccio(final double objectiu) {
+        double angle = (direccio + objectiu) % ANGLESCERCLE;
+        if (angle >= 0) {
+            direccio = angle;
+        } else {
+            direccio = (angle + ANGLESCERCLE);
+        }
     }
 
     /**

@@ -18,21 +18,7 @@ public class CosaEstatica extends Cosa {
      */
     public CosaEstatica(final String fitxer) {
         super(fitxer);
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * Construeix una cosa estàtica a partir del nom del fitxer que conté la
-     * imatge que farà servir i la posiciona en les coordenades que se li
-     * especifiquen.
-     *
-     * @param fitxer fitxer JPG o GIF que conté la imatge
-     * @param x Coordenada x
-     * @param y Coordenada y
-     */
-    public CosaEstatica(final String fitxer, final double x, final double y) {
-        super(fitxer, x, y);
-        // TODO Auto-generated constructor stub
+       setTipus("Estatica");
     }
 
     /**
@@ -41,6 +27,7 @@ public class CosaEstatica extends Cosa {
      */
     public CosaEstatica(final Image img) {
         super(img);
+        setTipus("Estatica");
     }
 
     /**
@@ -54,7 +41,7 @@ public class CosaEstatica extends Cosa {
      */
     public CosaEstatica(final Image img, final double x, final double y) {
         super(img, x, y);
-        // TODO Auto-generated constructor stub
+        setTipus("Estatica");
     }
 
     @Override

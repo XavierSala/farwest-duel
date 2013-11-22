@@ -11,6 +11,10 @@ import acm.program.GraphicsProgram;
  */
 public class App extends GraphicsProgram {
     /**
+     * Rotació del personatge principal.
+     */
+    private static final int GIR = 45;
+    /**
      * Altura de la pantalla.
      */
     private static final int SCREENHEIGHT = 600;
@@ -63,9 +67,9 @@ public class App extends GraphicsProgram {
         armari.addCowBoy("cowboy2.jpg", 0, 0);
 
         for (int i = 0; i < NUMPLANTES; i++) {
-            armari.addPersonatge(new CosaEstatica("arbre.jpg",
+            armari.addEstatica("arbre.jpg",
                     posicioAleatoria(SCREENWIDTH),
-                    posicioAleatoria(SCREENHEIGHT)));
+                    posicioAleatoria(SCREENHEIGHT));
         }
 
 
@@ -80,14 +84,17 @@ public class App extends GraphicsProgram {
 
 
     /**
-     * Carrega les imatges del joc en l'armari.
+     * Carrega les imatges del joc en l'armari i l'inicialitza perquè
+     * es pugui gestionar la pantalla des d'ell.
      */
     private void carregarImatges() {
-        final String[] imatges = {"cowboy.jpg", "cowboy2.jpg", "bala.jpg",
+        final String[] imatges = {"cowboy.jpg",
+                "cowboy2.jpg",
+                "bala.jpg",
                 "arbre.jpg"};
-        // ", "cactus.jpg"};
+
         armari.setPantalla(this);
-        // Iniciar el sistema: Loading ...
+
         for (String imatge: imatges) {
             armari.setImatge(imatge);
         }
@@ -99,19 +106,16 @@ public class App extends GraphicsProgram {
      */
     @Override
     public final void keyPressed(final KeyEvent e) {
-       protagonista.setVelocitat(2);
+
         switch(e.getKeyCode()) {
         case KeyEvent.VK_UP:
-            protagonista.setDireccio(90);
-            break;
-        case KeyEvent.VK_DOWN:
-            protagonista.setDireccio(270);
+            protagonista.setVelocitat(2);
             break;
         case KeyEvent.VK_LEFT:
-            protagonista.setDireccio(180);
+            protagonista.giraDireccio(GIR);
             break;
         case KeyEvent.VK_RIGHT:
-            protagonista.setDireccio(0);
+            protagonista.giraDireccio(-1 * GIR);
             break;
         case KeyEvent.VK_SPACE:
             // posar la velocitat a zero
@@ -124,12 +128,17 @@ public class App extends GraphicsProgram {
     }
 
     /**
-     * Deixa anar la tecla.
+     * Deixa anar la tecla. Només té efecte per la tecla d'avançar
      * @param e event
      */
     @Override
     public final void keyReleased(final KeyEvent e) {
-        protagonista.setVelocitat(0);
+        switch(e.getKeyCode()) {
+        case KeyEvent.VK_UP:
+            protagonista.setVelocitat(0);
+            break;
+        default:
+        }
     }
 
     /**

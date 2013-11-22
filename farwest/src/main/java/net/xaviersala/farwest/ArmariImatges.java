@@ -70,12 +70,16 @@ public class ArmariImatges {
     }
 
     /**
-     * Afegir personatge al joc.
-     * @param tipus personatge
+     * Afegir un objecte estàtic al joc.
+     * @param quina per definir quina imatge del cowboy afegim
+     * @param x posició x
+     * @param y posició y
      */
-    public void addPersonatge(final Cosa tipus) {
-        personatges.add(tipus);
-        pantalla.add(tipus.getImatge());
+    public void addEstatica(final String quina,
+            final double x, final double y) {
+        CosaEstatica c = new CosaEstatica(getImatge(quina), x , y);
+        personatges.add(c);
+        pantalla.add(c.getImatge());
     }
 
     /**
