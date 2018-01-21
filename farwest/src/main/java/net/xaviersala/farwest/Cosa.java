@@ -23,6 +23,8 @@ public abstract class Cosa {
      */
     private String tipus;
 
+    private boolean mort = false;
+
     /**
      * @return the tipus
      */
@@ -43,6 +45,7 @@ public abstract class Cosa {
      */
     public Cosa(final String fitxer) {
         imatge = new GImage(fitxer);
+        mort = false;
     }
 
     /**
@@ -142,6 +145,13 @@ public abstract class Cosa {
        return imatge.getBounds();
    }
 
+   /**
+    *
+    * @return
+    */
+   public final boolean isMort() {
+       return mort ;
+   }
    /**
     * Indicarà a un objecte que ha estat tocat.
     * @return retorna si l'hem d'eliminar o no.

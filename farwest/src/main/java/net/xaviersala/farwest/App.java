@@ -3,6 +3,7 @@ package net.xaviersala.farwest;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import acm.graphics.GLabel;
 import acm.program.GraphicsProgram;
 
 /**
@@ -59,6 +60,8 @@ public class App extends GraphicsProgram {
 
         carregarImatges();
 
+        clicaPerComencar();
+
         int principal = armari.addCowBoy("cowboy.jpg",
                 posicioAleatoria(SCREENWIDTH),
                 posicioAleatoria(SCREENHEIGHT));
@@ -80,6 +83,19 @@ public class App extends GraphicsProgram {
 
 
         // System.out.println("Hello World!");
+    }
+
+
+    /**
+     *
+     */
+    private void clicaPerComencar() {
+        GLabel label = new GLabel("Clica per començar");
+        double x = (getWidth() - label.getWidth()) / 2;
+        double y = (getHeight() + label.getAscent()) / 2;
+        add(label, x, y);
+        waitForClick();
+        remove(label);
     }
 
 
